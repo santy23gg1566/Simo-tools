@@ -1,0 +1,8 @@
+{
+  "name": "simo-tools-2027",
+  "version": "2.0.0",
+  "private": true,
+  "description": "SIMÓ Tools - Android APK con HTML único, cifrado local",
+  "dependencies": {"@capacitor/android": "^8.0.0", "@capacitor/core": "^8.0.0"},
+  "devDependencies": {"@capacitor/cli": "^8.0.0"}
+}

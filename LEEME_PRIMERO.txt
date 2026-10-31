@@ -1,0 +1,44 @@
+SIMÓ TOOLS V2.0 · EDICIÓN 2027
+================================
+
+APP HTML ORIGINAL: www/index.html
+- Se puede abrir y editar únicamente con Bloc de notas.
+- TODOS los estilos CSS y el JavaScript están en un solo archivo.
+- Sin librerías ni fuentes descargadas en tiempo de ejecución.
+- Abre el HTML en Chrome para probarlo antes de compilar.
+
+PARA CONVERTIRLO EN APK GRATIS SIN ANDROID STUDIO:
+1. Descomprime este ZIP.
+2. Crea un repositorio nuevo en github.com (público si quieres usar minutos gratis de Actions).
+3. Sube TODOS los archivos y carpetas del proyecto, manteniendo las rutas.
+4. Abre la pestaña Actions. Habilita los workflows si GitHub lo solicita.
+5. Entra en «Compilar SIMO Tools V2 APK» y pulsa Run workflow.
+6. Abre la ejecución terminada y descarga el artefacto SIMO-TOOLS-2027-APK.
+7. Descomprime ese artefacto y encontrarás app-debug.apk. Transfiérelo e instálalo en Android.
+
+IMPORTANTE:
+- No se incluye APK ya compilado. El workflow no ha sido ejecutado en GitHub.
+- Es un APK de prueba firmado para depuración. No publicar así en Play Store.
+- El inicio de sesión es LOCAL y NO es una cuenta remota.
+- Los datos se cifran en localStorage con AES-GCM y una clave derivada de la contraseña.
+- Si eliges mantener sesión iniciada, la clave se almacena en el dispositivo para facilitar el acceso.
+  No lo trates como una bóveda de alta seguridad ni guardes tarjetas bancarias/contraseñas.
+- No hay sincronización entre teléfonos ni recuperación de contraseña por correo.
+- Al borrar datos del navegador o al desinstalar la app, se pueden perder todos los datos.
+- Exporta copias en Ajustes y guárdalas bien: el JSON exportado NO está cifrado.
+- Esta versión no incluye notificaciones push cuando la app está cerrada.
+- Las aplicaciones Android y el archivo HTML abierto en navegador NO comparten almacenamiento.
+- La app funciona offline, salvo los enlaces externos que requieren internet.
+- No convierte documentos ni consulta tracking en vivo; las funciones disponibles se indican en pantalla.
+- Los permisos de cámara, ubicación y contactos no se solicitan.
+
+ICONOS:
+- Nuevo logo original en assets/SIMO-LOGO.svg y .png
+- Recursos mipmap listos para APK.
+
+NOTA SOBRE ACTUALIZACIONES:
+- Cada workflow podría generar un APK de depuración con una firma diferente.
+- Para actualizar sin desinstalar la app se requiere una clave de firma constante.
+- Haz un respaldo de tus datos antes de desinstalar.
+
+Hecho con HTML, CSS y JavaScript para edición sencilla con Bloc de notas.
