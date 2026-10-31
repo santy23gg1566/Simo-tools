@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   apk:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
@@ -26,9 +26,6 @@ jobs:
         with:
           distribution: temurin
           java-version: '21'
-
-      - name: Android SDK
-        uses: android-actions/setup-android@v3
 
       - name: Dependencias
         run: npm install --no-audit --no-fund
