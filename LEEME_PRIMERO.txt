@@ -1,44 +1,66 @@
-SIMÓ TOOLS V2.0 · EDICIÓN 2027
-================================
+SIMO HUB TOOLS 3.0 — HTML + WEB + APK
+==================================
 
-APP HTML ORIGINAL: www/index.html
-- Se puede abrir y editar únicamente con Bloc de notas.
-- TODOS los estilos CSS y el JavaScript están en un solo archivo.
-- Sin librerías ni fuentes descargadas en tiempo de ejecución.
-- Abre el HTML en Chrome para probarlo antes de compilar.
+QUE CAMBIA
+- Nuevo nombre y rediseño completo, adaptable a PC, tablet y celular.
+- Nuevas herramientas: horario, tareas/exámenes, plan semanal, notas, calificaciones, tarjetas, enfoque, calculadora.
+- Juegos: quiz, memoria y 2048.
+- 9 paletas de color, claro/oscuro/automático, fuente, animaciones, vista compacta.
+- Acceso local con contraseña, guardado cifrado, respaldo e importación.
+- Toasts discretos en vez de ventanas molestas.
+- Botón de instalación web (PWA) cuando el navegador lo permite.
 
-PARA CONVERTIRLO EN APK GRATIS SIN ANDROID STUDIO:
-1. Descomprime este ZIP.
-2. Crea un repositorio nuevo en github.com (público si quieres usar minutos gratis de Actions).
-3. Sube TODOS los archivos y carpetas del proyecto, manteniendo las rutas.
-4. Abre la pestaña Actions. Habilita los workflows si GitHub lo solicita.
-5. Entra en «Compilar SIMO Tools V2 APK» y pulsa Run workflow.
-6. Abre la ejecución terminada y descarga el artefacto SIMO-TOOLS-2027-APK.
-7. Descomprime ese artefacto y encontrarás app-debug.apk. Transfiérelo e instálalo en Android.
+EDITAR DESDE BLOC DE NOTAS
+Abre www/index.html en el Bloc de notas. Guarda los cambios.
+Todo el CSS y el JavaScript de la interfaz están en este único archivo.
 
-IMPORTANTE:
-- No se incluye APK ya compilado. El workflow no ha sido ejecutado en GitHub.
-- Es un APK de prueba firmado para depuración. No publicar así en Play Store.
-- El inicio de sesión es LOCAL y NO es una cuenta remota.
-- Los datos se cifran en localStorage con AES-GCM y una clave derivada de la contraseña.
-- Si eliges mantener sesión iniciada, la clave se almacena en el dispositivo para facilitar el acceso.
-  No lo trates como una bóveda de alta seguridad ni guardes tarjetas bancarias/contraseñas.
-- No hay sincronización entre teléfonos ni recuperación de contraseña por correo.
-- Al borrar datos del navegador o al desinstalar la app, se pueden perder todos los datos.
-- Exporta copias en Ajustes y guárdalas bien: el JSON exportado NO está cifrado.
-- Esta versión no incluye notificaciones push cuando la app está cerrada.
-- Las aplicaciones Android y el archivo HTML abierto en navegador NO comparten almacenamiento.
-- La app funciona offline, salvo los enlaces externos que requieren internet.
-- No convierte documentos ni consulta tracking en vivo; las funciones disponibles se indican en pantalla.
-- Los permisos de cámara, ubicación y contactos no se solicitan.
+ACTUALIZAR EL APK EN GITHUB
+1. Abre https://github.com/santy23gg1566/Simo-tools
+2. Entra en www/index.html y pulsa Edit (lápiz) para reemplazar su contenido.
+   Para la actualización 3.0, SUBE TAMBIÉN todos los otros archivos y carpetas
+   de este ZIP, pues el nombre, los iconos, la PWA y el workflow también cambian.
+3. Asegúrate de tener .github/workflows/android-apk.yml en tu repositorio.
+4. Guarda con Commit changes.
+5. En Actions abre "Compilar Simo Hub Tools APK".
+6. Cuando salga verde, ve a Releases y descarga Simo-Hub-Tools.apk DIRECTAMENTE
+   si aparece la publicación. Si Github deniega los permisos de Releases, usa Artifacts.
+   Enlace estable después de la primera ejecución: 
+   https://github.com/santy23gg1566/Simo-tools/releases/download/hub-latest/Simo-Hub-Tools.apk
+7. También puedes ir a Actions > Summary > Artifacts y descargar el ZIP
+   SIMO-HUB-TOOLS-APK, que ahora contiene Simo-Hub-Tools.apk.
 
-ICONOS:
-- Nuevo logo original en assets/SIMO-LOGO.svg y .png
-- Recursos mipmap listos para APK.
+PUBLICAR COMO WEB / INSTALAR CON BOTON
+En Netlify puedes subir SOLO la carpeta www (su contenido debe quedar como
+raíz del sitio). En GitHub Pages puedes publicar los mismos archivos.
+Cuando visitas la web publicada con HTTPS, abre Configuración > Instalar.
+En Chrome Android se puede abrir una ventana nativa de instalación en un toque
+si el navegador considera instalable la PWA. La confirmación del sistema
+sigue siendo obligatoria. En iPhone puedes usar Compartir > Añadir a inicio.
 
-NOTA SOBRE ACTUALIZACIONES:
-- Cada workflow podría generar un APK de depuración con una firma diferente.
-- Para actualizar sin desinstalar la app se requiere una clave de firma constante.
-- Haz un respaldo de tus datos antes de desinstalar.
+SOBRE LAS ALERTAS AL INSTALAR
+Los avisos de Android / Play Protect por instalar APK fuera de tiendas NO
+se pueden quitar desde HTML ni desde GitHub Actions. El APK DEBUG anterior
+puede tener una firma distinta tras cada compilación.
 
-Hecho con HTML, CSS y JavaScript para edición sencilla con Bloc de notas.
+PARA ACTUALIZAR ENCIMA SIN REINSTALAR
+Necesitas una clave de firma privada estable, siempre la misma:
+- SIMO_KEYSTORE_B64
+- SIMO_KEYSTORE_PASSWORD
+- SIMO_KEY_ALIAS
+- SIMO_KEY_PASSWORD
+Son Secrets de GitHub Actions; consulta GUIA_FIRMA_Y_ACTUALIZACIONES.txt.
+Tras instalar por primera vez la APK firmada release, las posteriores versiones
+con igual packageId y clave, y mayor versionCode, podrán actualizarse encima.
+Conservamos el packageId "com.simo.tools2027" del APK anterior. AUN ASI,
+si el APK anterior está firmado con otra clave, tendrás que EXPORTAR DATOS,
+DESINSTALAR EL ANTERIOR E INSTALAR EL NUEVO una vez. El nuevo sistema usa
+un formato diferente y NO migra automáticamente los datos antiguos.
+
+ACCESO Y DATOS
+Login local, NO sincronizado ni recuperable desde servidores.
+Las cuentas antiguas de SIMÓ TOOLS 2027 NO se importan automáticamente.
+El respaldo nuevo exporta JSON sin cifrar: mantenlo privado.
+Autologin conserva una clave en el dispositivo, no apropiado para secretos.
+No hay notificaciones push ni funcionamiento del temporizador en segundo plano.
+
+Nunca compartas tu contraseña ni una clave de firma privada por chat o GitHub.

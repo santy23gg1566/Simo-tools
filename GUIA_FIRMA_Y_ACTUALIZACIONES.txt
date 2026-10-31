@@ -1,0 +1,47 @@
+FIRMA PERMANENTE DE SIMO HUB TOOLS (OPCIONAL)
+============================================
+
+IMPORTANTE: NO SUBAS ARCHIVOS .jks NI CONTRASEÑAS AL REPOSITORIO.
+Si no configuras esto, GitHub seguirá entregando APK de prueba (debug).
+
+OPCION CON JDK INSTALADO EN TU COMPUTADORA (una sola vez)
+1. Instala JDK 21 si todavía no dispones de "keytool".
+2. Abre la terminal en un lugar PRIVADO de tu PC.
+3. Ejecuta el siguiente comando y rellena las preguntas que aparezcan:
+
+   keytool -genkeypair -v -keystore simo-hub-release.jks -alias simohub -keyalg RSA -keysize 3072 -validity 10000
+
+   Usa una contraseña segura y guárdala. NO compartas el fichero JKS.
+
+4. En Windows PowerShell, DENTRO de la carpeta del archivo JKS:
+
+   [Convert]::ToBase64String([IO.File]::ReadAllBytes((Resolve-Path .\simo-hub-release.jks))) | Set-Clipboard
+
+   Ya tienes el contenido Base64 en el portapapeles. No lo pegues en chats.
+
+5. Abre tu GitHub > Simo-tools > Settings > Secrets and variables > Actions.
+   Crea estos secretos (New repository secret):
+
+   SIMO_KEYSTORE_B64 = texto Base64 del paso 4
+   SIMO_KEYSTORE_PASSWORD = contraseña del almacén
+   SIMO_KEY_ALIAS = simohub
+   SIMO_KEY_PASSWORD = contraseña de la clave (si no se pidió otra,
+                       usa la misma del almacén)
+
+6. Guarda el .jks y las contraseñas FUERA de GitHub; necesitas la misma
+   clave privada para TODAS las futuras actualizaciones.
+
+7. Vuelve a Actions y ejecuta el flujo.
+   Cuando estén los cuatro secrets, compilará app-release.apk firmada.
+   Las futuras actualizaciones con ESTA MISMA clave serán compatibles.
+
+SI TU VERSION ANTERIOR SE HIZO CON DEBUG:
+Por seguridad Android rechazará una nueva APK firmada con clave distinta.
+Exporta todo lo posible desde la app antigua ANTES de desinstalar.
+Después instala la release firmada y conserva ese keystore para siempre.
+No podemos garantizar migración automática entre los dos formatos de app.
+
+ADVERTENCIAS DE ANDROID:
+No puedes eliminar los permisos de instalación ni las comprobaciones de
+Google Play Protect desde el código HTML. Para una experiencia más parecida
+al botón de instalar de Play Store, usa PWA web o publica en una tienda.
